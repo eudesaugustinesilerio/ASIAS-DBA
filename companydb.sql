@@ -21,9 +21,9 @@ USE `companydb`;
 DROP TABLE IF EXISTS `departments`;
 
 CREATE TABLE `departments` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `dept_name` varchar(255) DEFAULT NULL,
-  `dept_num` varchar(255) DEFAULT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `dept_name` VARCHAR(255) DEFAULT NULL,
+  `dept_num` VARCHAR(255) DEFAULT NULL,
   `dept_budget` bigint DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
