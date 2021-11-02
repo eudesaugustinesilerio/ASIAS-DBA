@@ -21,16 +21,16 @@ USE `companydb`;
 DROP TABLE IF EXISTS `departments`;
 
 CREATE TABLE `departments` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `dept_name` VARCHAR(255) DEFAULT NULL,
-  `dept_num` VARCHAR(255) DEFAULT NULL,
+  `dept_id` int NOT NULL AUTO_INCREMENT,
+  `dept_name` varchar(255) DEFAULT NULL,
+  `dept_num` varchar(255) DEFAULT NULL,
   `dept_budget` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`dept_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `departments` */
 
-insert  into `departments`(`id`,`dept_name`,`dept_num`,`dept_budget`) values 
+insert  into `departments`(`dept_id`,`dept_name`,`dept_num`,`dept_budget`) values 
 (1,'Marketing','2177A',50000),
 (2,'Information Technology','8618B',90000),
 (3,'Accounting','3187C',80000),
@@ -38,21 +38,21 @@ insert  into `departments`(`id`,`dept_name`,`dept_num`,`dept_budget`) values
 (5,'Copy Writers','5889E',40000),
 (6,'Human Resource','3891G',70000);
 
-/*Table structure for table `emp_childs` */
+/*Table structure for table `emp_children` */
 
-DROP TABLE IF EXISTS `emp_childs`;
+DROP TABLE IF EXISTS `emp_children`;
 
-CREATE TABLE `emp_childs` (
-  `id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `emp_children` (
+  `ch_id` int NOT NULL AUTO_INCREMENT,
   `l_name` varchar(255) DEFAULT NULL,
   `f_name` varchar(255) DEFAULT NULL,
   `age` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`ch_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-/*Data for the table `emp_childs` */
+/*Data for the table `emp_children` */
 
-insert  into `emp_childs`(`id`,`l_name`,`f_name`,`age`) values 
+insert  into `emp_children`(`ch_id`,`l_name`,`f_name`,`age`) values 
 (1,'Smith','Samantha',4),
 (2,'Doe','Zyon',10),
 (3,'Grey','Zola',9),
@@ -65,17 +65,17 @@ insert  into `emp_childs`(`id`,`l_name`,`f_name`,`age`) values
 DROP TABLE IF EXISTS `employees`;
 
 CREATE TABLE `employees` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `emp_id` int NOT NULL AUTO_INCREMENT,
   `l_name` varchar(255) DEFAULT NULL,
   `f_name` varchar(255) DEFAULT NULL,
   `salary` bigint DEFAULT NULL,
   `phone_num` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`emp_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `employees` */
 
-insert  into `employees`(`id`,`l_name`,`f_name`,`salary`,`phone_num`) values 
+insert  into `employees`(`emp_id`,`l_name`,`f_name`,`salary`,`phone_num`) values 
 (1,'Smith','Brian',15000,'0926900875'),
 (2,'Doe','John',20000,'0916908985'),
 (3,'Grey','Meredith',17000,'0927980632'),
