@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.1.7 (64 bit)
-MySQL - 8.0.26 : Database - companydb
+MySQL - 10.4.21-MariaDB : Database - companydb
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 8.0.26 : Database - companydb
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`companydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`companydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 
 USE `companydb`;
 
@@ -21,12 +21,12 @@ USE `companydb`;
 DROP TABLE IF EXISTS `departments`;
 
 CREATE TABLE `departments` (
-  `dept_id` int NOT NULL AUTO_INCREMENT,
+  `dept_id` int(11) NOT NULL AUTO_INCREMENT,
   `dept_name` varchar(255) DEFAULT NULL,
   `dept_num` varchar(255) DEFAULT NULL,
-  `dept_budget` bigint DEFAULT NULL,
+  `dept_budget` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`dept_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `departments` */
 
@@ -43,12 +43,12 @@ insert  into `departments`(`dept_id`,`dept_name`,`dept_num`,`dept_budget`) value
 DROP TABLE IF EXISTS `emp_children`;
 
 CREATE TABLE `emp_children` (
-  `ch_id` int NOT NULL AUTO_INCREMENT,
+  `ch_id` int(11) NOT NULL AUTO_INCREMENT,
   `l_name` varchar(255) DEFAULT NULL,
   `f_name` varchar(255) DEFAULT NULL,
-  `age` int DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
   PRIMARY KEY (`ch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `emp_children` */
 
@@ -65,13 +65,13 @@ insert  into `emp_children`(`ch_id`,`l_name`,`f_name`,`age`) values
 DROP TABLE IF EXISTS `employees`;
 
 CREATE TABLE `employees` (
-  `emp_id` int NOT NULL AUTO_INCREMENT,
+  `emp_id` int(11) NOT NULL AUTO_INCREMENT,
   `l_name` varchar(255) DEFAULT NULL,
   `f_name` varchar(255) DEFAULT NULL,
-  `salary` bigint DEFAULT NULL,
+  `salary` bigint(20) DEFAULT NULL,
   `phone_num` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`emp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `employees` */
 
