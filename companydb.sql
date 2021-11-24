@@ -51,7 +51,7 @@ CREATE TABLE `emp_children` (
   PRIMARY KEY (`child_id`),
   KEY `emp_ID` (`emp_ID`),
   CONSTRAINT `emp_children_ibfk_1` FOREIGN KEY (`emp_ID`) REFERENCES `employees` (`emp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `emp_children` */
 
@@ -61,7 +61,10 @@ insert  into `emp_children`(`child_id`,`emp_ID`,`cLname`,`cFname`,`age`) values
 (3,3,'Grey','Zola',9),
 (4,4,'Deluca','Ronen',11),
 (5,5,'Schmitt','Nico',14),
-(6,6,'Ellis','Ellis',5);
+(6,6,'Ellis','Ellis',5),
+(7,7,'Corey','Beck',10),
+(8,9,'Stevens','Peter',2),
+(9,10,'Peters','Claire',7);
 
 /*Table structure for table `employees` */
 
@@ -79,18 +82,20 @@ CREATE TABLE `employees` (
   PRIMARY KEY (`emp_id`),
   KEY `dept_ID` (`dept_ID`),
   CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`dept_ID`) REFERENCES `departments` (`dept_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `employees` */
 
 insert  into `employees`(`emp_id`,`dept_ID`,`lname`,`fname`,`jobTitle`,`salary`,`phone_num`,`dateOfEmploy`) values 
 (1,1,'Smith','Brian','Social Media Manager',15000,'0926900875','2015-06-01'),
 (2,2,'Doe','John','Web Developer',20000,'0916908985','2020-01-24'),
-(3,3,'Grey','Meredith','Book keeper',17000,'0927980632','2019-07-24'),
-(4,4,'DeLuca','Andrew','Editor-in-Chief',15000,'09213688871','2018-02-24'),
+(3,3,'Grey','Meredith','Accountant',17000,'0927980632','2019-07-24'),
+(4,4,'DeLuca','Andrew','Illustrator',15000,'0921368887','2018-02-24'),
 (5,5,'Schmitt','Levi','Copy Writer',19000,'0951950111','2017-12-24'),
 (6,6,'Ellis','Gwen','Head HR',13000,'0997580329','2021-06-24'),
-(7,2,'Beck','Loney','Web Developer',20000,'0955668875','2020-06-24');
+(7,2,'Beck','Loney','Web Developer',20000,'0955668875','2020-06-24'),
+(9,3,'Luka ','Stevens','Accountant',23000,'0954574112','2018-08-24'),
+(10,4,'Sam','Peters','Illustrator',26000,'0987752118','2017-06-17');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
