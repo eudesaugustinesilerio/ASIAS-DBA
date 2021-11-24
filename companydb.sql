@@ -1,6 +1,6 @@
 /*
 SQLyog Community v13.1.7 (64 bit)
-MySQL - 10.4.21-MariaDB : Database - companydb
+MySQL - 8.0.26 : Database - companydb
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 10.4.21-MariaDB : Database - companydb
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`companydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`companydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `companydb`;
 
@@ -21,12 +21,12 @@ USE `companydb`;
 DROP TABLE IF EXISTS `departments`;
 
 CREATE TABLE `departments` (
-  `dept_id` int(11) NOT NULL AUTO_INCREMENT,
+  `dept_id` int NOT NULL AUTO_INCREMENT,
   `dept_name` varchar(255) DEFAULT NULL,
   `dept_num` varchar(255) DEFAULT NULL,
-  `dept_budget` bigint(20) DEFAULT NULL,
+  `dept_budget` bigint DEFAULT NULL,
   PRIMARY KEY (`dept_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `departments` */
 
@@ -43,45 +43,54 @@ insert  into `departments`(`dept_id`,`dept_name`,`dept_num`,`dept_budget`) value
 DROP TABLE IF EXISTS `emp_children`;
 
 CREATE TABLE `emp_children` (
-  `ch_id` int(11) NOT NULL AUTO_INCREMENT,
-  `l_name` varchar(255) DEFAULT NULL,
-  `f_name` varchar(255) DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ch_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+  `child_id` int NOT NULL AUTO_INCREMENT,
+  `emp_ID` int DEFAULT NULL,
+  `cLname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `cFname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  PRIMARY KEY (`child_id`),
+  KEY `emp_ID` (`emp_ID`),
+  CONSTRAINT `emp_children_ibfk_1` FOREIGN KEY (`emp_ID`) REFERENCES `employees` (`emp_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `emp_children` */
 
-insert  into `emp_children`(`ch_id`,`l_name`,`f_name`,`age`) values 
-(1,'Smith','Samantha',4),
-(2,'Doe','Zyon',10),
-(3,'Grey','Zola',9),
-(4,'Deluca','Ronen',11),
-(5,'Schmitt','Nico',14),
-(6,'Ellis','Ellis',5);
+insert  into `emp_children`(`child_id`,`emp_ID`,`cLname`,`cFname`,`age`) values 
+(1,1,'Smith','Samantha',4),
+(2,2,'Doe','Zyon',10),
+(3,3,'Grey','Zola',9),
+(4,4,'Deluca','Ronen',11),
+(5,5,'Schmitt','Nico',14),
+(6,6,'Ellis','Ellis',5);
 
 /*Table structure for table `employees` */
 
 DROP TABLE IF EXISTS `employees`;
 
 CREATE TABLE `employees` (
-  `emp_id` int(11) NOT NULL AUTO_INCREMENT,
-  `l_name` varchar(255) DEFAULT NULL,
-  `f_name` varchar(255) DEFAULT NULL,
-  `salary` bigint(20) DEFAULT NULL,
+  `emp_id` int NOT NULL AUTO_INCREMENT,
+  `dept_ID` int DEFAULT NULL,
+  `lname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `fname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `jobTitle` varchar(255) DEFAULT NULL,
+  `salary` decimal(10,0) DEFAULT NULL,
   `phone_num` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`emp_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+  `dateOfEmploy` date DEFAULT NULL,
+  PRIMARY KEY (`emp_id`),
+  KEY `dept_ID` (`dept_ID`),
+  CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`dept_ID`) REFERENCES `departments` (`dept_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `employees` */
 
-insert  into `employees`(`emp_id`,`l_name`,`f_name`,`salary`,`phone_num`) values 
-(1,'Smith','Brian',15000,'0926900875'),
-(2,'Doe','John',20000,'0916908985'),
-(3,'Grey','Meredith',17000,'0927980632'),
-(4,'DeLuca','Andrew',18000,'09213688871'),
-(5,'Schmitt','Levi',19000,'0951950111'),
-(6,'Ellis','Gwen',13000,'0997580329');
+insert  into `employees`(`emp_id`,`dept_ID`,`lname`,`fname`,`jobTitle`,`salary`,`phone_num`,`dateOfEmploy`) values 
+(1,1,'Smith','Brian','Social Media Manager',15000,'0926900875','2015-06-01'),
+(2,2,'Doe','John','Web Developer',20000,'0916908985','2020-01-24'),
+(3,3,'Grey','Meredith','Book keeper',17000,'0927980632','2019-07-24'),
+(4,4,'DeLuca','Andrew','Editor-in-Chief',15000,'09213688871','2018-02-24'),
+(5,5,'Schmitt','Levi','Copy Writer',19000,'0951950111','2017-12-24'),
+(6,6,'Ellis','Gwen','Head HR',13000,'0997580329','2021-06-24'),
+(7,2,'Beck','Loney','Web Developer',20000,'0955668875','2020-06-24');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
